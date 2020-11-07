@@ -51,6 +51,7 @@ Optional options:
   --custompub=DIR   Directory that contains custom public(i.e. can later be accessed from the web) data.
   --custompriv=DIR  Directory that contains custom private data.
   --tpldir=DIR      Directory that contains templates used by this plugin.
+
 USAGE
 ;
 
@@ -68,7 +69,8 @@ if($code === FALSE)
 }
 
 /* Remove trailing <?php ?> delimiters */
-$code = preg_replace("/^\\<\\?php(.*)\\?\\>\\s*?$/s", "\\1", $code);
+$code = preg_replace('/^<\?php/s', "", $code);
+$code = preg_replace('/\?>\s*$/s', "", $code);
 
 $plugin = new PluginPackage();
 
